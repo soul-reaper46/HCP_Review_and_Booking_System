@@ -1,0 +1,16 @@
+# Ignore IDE files
+.idea/
+*.iml
+*.vscode/
+
+# Ignore build files
+/target/
+*.class
+*.jar
+
+# Ignore log files
+*.log
+
+# Ignore system files
+.DS_Store
+Thumbs.db

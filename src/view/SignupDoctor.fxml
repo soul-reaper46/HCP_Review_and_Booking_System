@@ -65,7 +65,7 @@
                   <Font size="8.0" />
                </font>
             </Text>
-            <PasswordField layoutX="38.0" layoutY="229.0" prefHeight="26.0" prefWidth="216.0" promptText="at leat 8 character" style="-fx-background-color: #FFFEFE; -fx-border-color: #ABABAB; -fx-border-radius: 5;">
+            <PasswordField fx:id="PasswordTextField" layoutX="38.0" layoutY="229.0" prefHeight="26.0" prefWidth="216.0" promptText="at leat 8 character" style="-fx-background-color: #FFFEFE; -fx-border-color: #ABABAB; -fx-border-radius: 5;">
                <font>
                   <Font size="8.0" />
                </font>

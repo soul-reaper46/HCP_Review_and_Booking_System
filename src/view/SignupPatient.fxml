@@ -14,12 +14,12 @@
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="297.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="#848383" layoutX="139.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Are you a patient ?">
+            <Text fill="#848383" layoutX="139.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Are you a Doctor ?">
                <font>
                   <Font size="8.0" />
                </font>
             </Text>
-            <Text fx:id="PatientLogInLink" fill="#018180" layoutX="209.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="BtnStyle" text="Log In Here">
+            <Text fx:id="DoctorLogInLink" fill="#018180" layoutX="209.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="BtnStyle" text="Log In Here">
                <font>
                   <Font size="8.0" />
                </font>
@@ -39,7 +39,7 @@
                   <Font size="8.0" />
                </font>
             </TextField>
-            <Button fx:id="SignUpButtonDoctor" layoutX="38.0" layoutY="277.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="216.0" styleClass="signUpBtn" text="Sign Up" textFill="WHITE">
+            <Button fx:id="SignUpButtonPatient" layoutX="38.0" layoutY="277.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="216.0" styleClass="signUpBtn" text="Sign Up" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
@@ -54,7 +54,7 @@
                   <Font size="8.0" />
                </font>
             </Text>
-            <PasswordField layoutX="38.0" layoutY="229.0" prefHeight="26.0" prefWidth="216.0" promptText="at leat 8 character" style="-fx-background-color: #FFFEFE; -fx-border-color: #ABABAB; -fx-border-radius: 5;">
+            <PasswordField fx:id="PasswordTextField" layoutX="38.0" layoutY="229.0" prefHeight="26.0" prefWidth="216.0" promptText="at leat 8 character" style="-fx-background-color: #FFFEFE; -fx-border-color: #ABABAB; -fx-border-radius: 5;">
                <font>
                   <Font size="8.0" />
                </font>

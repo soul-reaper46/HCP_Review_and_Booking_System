@@ -5,19 +5,17 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import model.Data;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class Main extends Application {
     private static Stage primaryStageObj;
+    private static Database database;
 
     @Override
     public void start(Stage primaryStage) {
-    	
-    	// Initialize data
-        Data.getPatients();
-        Data.getDoctors();
-        
         try {
+            database = Database.getInstance();
             primaryStageObj = primaryStage;
             Parent root = FXMLLoader.load(getClass().getResource("LoginDoctor.fxml"));
             primaryStage.setTitle("HCP_Review_and_Booking_System");
@@ -27,7 +25,7 @@ public class Main extends Application {
             primaryStage.setResizable(false);
             primaryStage.show();
         } catch(Exception e) {
-            System.out.println("Error loading application: " + e.getMessage());
+            showError("Error loading application", e.getMessage());
             e.printStackTrace();
         }
     }
@@ -37,9 +35,17 @@ public class Main extends Application {
             Parent pane = FXMLLoader.load(Main.class.getResource(fxml));
             primaryStageObj.getScene().setRoot(pane);
         } catch(Exception e) {
+            showError("Navigation Error", "Error loading: " + fxml);
             e.printStackTrace();
-            System.out.println("Error loading: " + fxml);
         }
+    }
+
+    private static void showError(String title, String content) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
     public static void main(String[] args) {

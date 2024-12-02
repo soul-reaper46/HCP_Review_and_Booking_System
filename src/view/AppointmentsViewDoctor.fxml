@@ -3,6 +3,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" spacing="10">
+<VBox xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" spacing="10">
     <Label text="Upcoming Appointments" />
 </VBox>

@@ -42,7 +42,7 @@ public class Main extends Application {
             if (fxml.contains("Dashboard")) {
                 primaryStageObj.setResizable(true);
                 primaryStageObj.setMaximized(true);
-                Scene dashboardScene = new Scene(pane, 1800, 800);
+                Scene dashboardScene = new Scene(pane, 1700, 900);
                 dashboardScene.getStylesheets().add(Main.class.getResource("StyleSheet.css").toExternalForm());
                 primaryStageObj.setScene(dashboardScene);
             } else {

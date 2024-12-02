@@ -5,12 +5,18 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import model.Data;
 
 public class Main extends Application {
     private static Stage primaryStageObj;
 
     @Override
     public void start(Stage primaryStage) {
+    	
+    	// Initialize data
+        Data.getPatients();
+        Data.getDoctors();
+        
         try {
             primaryStageObj = primaryStage;
             Parent root = FXMLLoader.load(getClass().getResource("LoginDoctor.fxml"));

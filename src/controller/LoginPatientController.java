@@ -1,4 +1,4 @@
-package application;
+package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,6 +7,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.text.Text;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import application.Main;
+import model.Data;
+import model.Patient;
 
 public class LoginPatientController {
    @FXML private TextField EmailTextField;
@@ -26,20 +29,26 @@ public class LoginPatientController {
                return;
            }
            
-           if(Database.getInstance().authenticateUser(email, password, false)) {
+           Patient loggedInPatient = Data.getPatients().stream()
+               .filter(p -> p.getEmail().equals(email) && p.getPassword().equals(password))
+               .findFirst()
+               .orElse(null);
+
+           if (loggedInPatient != null) {
                showAlert("Success", "Login successful!", AlertType.INFORMATION);
-               // Add navigation to patient dashboard here
+               Data.setLoggedInUserId(loggedInPatient.getId());
+               Main.changeScene("/view/PatientDashboard.fxml");
            } else {
                showAlert("Error", "Invalid credentials", AlertType.ERROR);
            }
        });
        
        SignUpLink.setOnMouseClicked(event -> {
-           Main.changeScene("SignupPatient.fxml");
+           Main.changeScene("/view/SignupPatient.fxml");
        });
        
        DoctorLogInLink.setOnMouseClicked(event -> {
-           Main.changeScene("LoginDoctor.fxml");
+           Main.changeScene("/view/LoginDoctor.fxml");
        });
    }
    

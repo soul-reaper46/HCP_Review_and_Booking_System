@@ -1,9 +1,11 @@
-package application;
+package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.scene.control.Alert.AlertType;
+import application.Main;
+import application.Database;
 
 public class SignupPatientController {
     @FXML private TextField EmailTextField;
@@ -17,8 +19,8 @@ public class SignupPatientController {
     @FXML
     public void initialize() {
         SignUpButtonPatient.setOnAction(event -> handleSignUp());
-        LogInLink.setOnMouseClicked(event -> Main.changeScene("LoginPatient.fxml"));
-        DoctorLogInLink.setOnMouseClicked(event -> Main.changeScene("LoginDoctor.fxml"));
+        LogInLink.setOnMouseClicked(event -> Main.changeScene("/view/LoginPatient.fxml"));
+        DoctorLogInLink.setOnMouseClicked(event -> Main.changeScene("/view/LoginDoctor.fxml"));
     }
     
     private void handleSignUp() {
@@ -45,7 +47,7 @@ public class SignupPatientController {
         try {
             Database.getInstance().addUser(email, password, firstName, lastName, false);
             showAlert("Success", "Account created successfully! Please login with your credentials.", AlertType.INFORMATION);
-            Main.changeScene("LoginPatient.fxml");
+            Main.changeScene("/view/LoginPatient.fxml");
         } catch (RuntimeException e) {
             showAlert("Error", e.getMessage(), AlertType.ERROR);
         }

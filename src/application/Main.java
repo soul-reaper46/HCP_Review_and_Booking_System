@@ -1,6 +1,8 @@
 package application;
 
 import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
@@ -8,6 +10,8 @@ import javafx.scene.control.Alert.AlertType;
 import model.Data;
 
 public class Main extends Application {
+    private static Stage primaryStageObj;
+    private static Database database;
 
     @Override
     public void start(Stage primaryStage) {
@@ -20,12 +24,10 @@ public class Main extends Application {
             primaryStageObj = primaryStage;
             Parent root = FXMLLoader.load(getClass().getResource("/view/LoginDoctor.fxml"));
             primaryStage.setTitle("HCP_Review_and_Booking_System");
-            Scene scene = new Scene(root, 520, 400);
+            Scene scene = new Scene(root, 1550, 800);
             scene.getStylesheets().add(getClass().getResource("StyleSheet.css").toExternalForm());
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Healthcare Booking System");
-            primaryStage.setMaximized(true);  // Maximize the window by default
-            primaryStage.setResizable(true);
+            primaryStage.setResizable(false);
             primaryStage.show();
         } catch (Exception e) {
             showError("Error loading application", e.getMessage());
@@ -41,14 +43,14 @@ public class Main extends Application {
                 primaryStageObj.setResizable(true);
                 primaryStageObj.setMaximized(true);
                 Scene dashboardScene = new Scene(pane, 1800, 800);
-                dashboardScene.getStylesheets().add(Main.class.getResource("StyleSheet.css").toExternalForm());
+                dashboardScene.getStylesheets().add(Main.class.getResource("/css/Style.css").toExternalForm());
                 primaryStageObj.setScene(dashboardScene);
             } else {
                 primaryStageObj.setResizable(false);
                 if (primaryStageObj.isMaximized()) {
                     primaryStageObj.setMaximized(false);
                 }
-                Scene loginScene = new Scene(pane, 520, 400);
+                Scene loginScene = new Scene(pane, 1550, 800);
                 loginScene.getStylesheets().add(Main.class.getResource("StyleSheet.css").toExternalForm());
                 primaryStageObj.setScene(loginScene);
             }

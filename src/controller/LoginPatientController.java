@@ -36,7 +36,7 @@ public class LoginPatientController {
 
            if (loggedInPatient != null) {
                showAlert("Success", "Login successful!", AlertType.INFORMATION);
-               Data.setLoggedInUserId(loggedInPatient.getId());
+               Data.setLoggedInUserId(loggedInPatient.getPatientId());
                Main.changeScene("/view/PatientDashboard.fxml");
            } else {
                showAlert("Error", "Invalid credentials", AlertType.ERROR);

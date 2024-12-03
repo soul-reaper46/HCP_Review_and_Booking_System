@@ -36,7 +36,7 @@ public class LoginDoctorController {
 
             if (loggedInDoctor != null) {
                 showAlert("Success", "Login successful!");
-                Data.setLoggedInUserId(loggedInDoctor.getId());
+                Data.setLoggedInUserId(loggedInDoctor.getDoctorId());
                 Main.changeScene("/view/DoctorDashboard.fxml");
             } else {
                 showAlert("Error", "Invalid credentials");

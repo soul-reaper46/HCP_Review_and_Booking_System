@@ -18,6 +18,7 @@ public class Main extends Application {
         // Initialize data
         Data.getPatients();
         Data.getDoctors();
+        Data.getAppointments();
 
         try {
             database = Database.getInstance();

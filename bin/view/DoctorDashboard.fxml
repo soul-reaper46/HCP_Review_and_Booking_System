@@ -12,7 +12,7 @@
         <VBox id="menu" spacing="10">
             <Label id="menu-title" text="Menu" />
             <!-- <Button text="Home" fx:id="btnHome" onAction="#handleHomeClick"/> -->
-            <Button text="Appointments" fx:id="btnAppointments" onAction="#handleAppointmentsClick"/>
+            <Button text="Current Appointments" fx:id="btnAppointments" onAction="#handleAppointmentsClick"/>
             <Button text="Past Appointments" fx:id="btnPatients" onAction="#handlePatientsClick"/>
             <Button text="Logout" fx:id="btnLogout" onAction="#handleLogoutClick"/>
         </VBox>

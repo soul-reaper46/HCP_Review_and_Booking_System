@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" spacing="10">
-    <Label text="Past Appointments" />
-</VBox>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.PastAppointmentsViewDoctorController">
+    <VBox spacing="10" alignment="CENTER" prefWidth="600.0" prefHeight="400.0" 
+          AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+          styleClass="cardt"> <!-- Applied 'card' class here -->
+          
+        <!-- Title -->
+        <Label text="Past Appointments" styleClass="title-labelt" /> <!-- Custom style for title -->
+
+        <!-- TableView -->
+        <TableView fx:id="pastAppointmentsTable" maxWidth="700" styleClass="table-view">
+            <columns>
+                <TableColumn text="Appointment ID" fx:id="appointmentIdColumn" prefWidth="200.0" styleClass="table-column"/>
+                <TableColumn text="Doctor Name" fx:id="doctorNameColumn" prefWidth="175" styleClass="table-column"/>
+                <TableColumn text="Patient Name" fx:id="patientNameColumn" prefWidth="175" styleClass="table-column"/>
+                <TableColumn text="Date" fx:id="dateColumn" prefWidth="150.0" styleClass="table-column"/>
+            </columns>
+        </TableView>
+    </VBox>
+</AnchorPane>

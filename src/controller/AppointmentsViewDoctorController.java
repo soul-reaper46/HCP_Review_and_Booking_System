@@ -1,51 +1,89 @@
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.Accordion;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TitledPane;
+import javafx.scene.layout.VBox;
+import model.Appointment;
+import model.Data;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AppointmentsViewDoctorController {
 
-    // Top bar and Date Buttons container
     @FXML
-    private HBox topbar;
+    private VBox accordionContainer;
 
     @FXML
-    private HBox dateButtonsContainer;
+    private DatePicker datePicker;
 
-    // Date buttons
-    @FXML
-    private Button btnToday, btnDate1, btnDate2, btnDate3, btnDate4;
+    private List<Appointment> appointments;
 
     @FXML
     public void initialize() {
-        // Ensure the top bar and date buttons container are styled correctly
-        if (topbar != null) {
-            topbar.getStyleClass().add("topbar");
-        }
-        if (dateButtonsContainer != null) {
-            dateButtonsContainer.getStyleClass().add("date-buttons");
-        }
-
-        // Set "Today" as the current day
-        btnToday.setText("Today");
-
-        // Get current date and set next 4 days
-        LocalDate currentDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy");
-
-        btnDate1.setText(currentDate.plusDays(1).format(formatter));
-        btnDate2.setText(currentDate.plusDays(2).format(formatter));
-        btnDate3.setText(currentDate.plusDays(3).format(formatter));
-        btnDate4.setText(currentDate.plusDays(4).format(formatter));
+        // Fetch the appointments from Data.java
+        appointments = Data.getAppointments();
+        
+        // Set the DatePicker to today's date
+        datePicker.setValue(LocalDate.now());
+        
+        // Load today's appointments
+        loadAppointmentsForDate(LocalDate.now());
     }
 
     @FXML
-    private void handleDateClick() {
-        // Handle date button click events here
-        System.out.println("Date button clicked!");
+    private void handleDateChange() {
+        LocalDate selectedDate = datePicker.getValue();
+        if (selectedDate != null) {
+            loadAppointmentsForDate(selectedDate);
+        }
+    }
+
+    private void loadAppointmentsForDate(LocalDate date) {
+        accordionContainer.getChildren().clear();
+        
+        // Filter appointments by date
+        List<Appointment> filteredAppointments = filterAppointmentsByDate(date);
+
+        // Create TitledPanes for each appointment
+        for (Appointment appointment : filteredAppointments) {
+            TitledPane pane = createAppointmentAccordion(appointment);
+            accordionContainer.getChildren().add(pane);
+        }
+    }
+
+    private List<Appointment> filterAppointmentsByDate(LocalDate date) {
+        List<Appointment> filtered = new ArrayList<>();
+        for (Appointment appointment : appointments) {
+            if (appointment.getAppointmentDate().isEqual(date)) {
+                filtered.add(appointment);
+            }
+        }
+        return filtered;
+    }
+
+    private TitledPane createAppointmentAccordion(Appointment appointment) {
+        // Extract patient name dynamically if available
+        String patientName = "Patient ID: " + appointment.getPatientId();
+
+        TitledPane titledPane = new TitledPane();
+        titledPane.setText(patientName);
+
+        VBox card = new VBox(10);
+        card.setPadding(new javafx.geometry.Insets(10));
+        card.getChildren().addAll(
+            new Label("Complaint: " + appointment.getComplaint()),
+            new Label("Previous Medication: " + appointment.getPreviousMedication()),
+            new Label("Booking Date: " + appointment.getBookingDate().toString()),
+            new Label("Appointment Date: " + appointment.getAppointmentDate().toString())
+        );
+
+        titledPane.setContent(card);
+        titledPane.setExpanded(false);
+        return titledPane;
     }
 }

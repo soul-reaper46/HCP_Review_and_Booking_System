@@ -6,13 +6,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DoctorDashboardController" fx:id="rootPane" stylesheets="@../css/style.css">
+<BorderPane xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DoctorDashboardController" fx:id="rootPane" stylesheets="@../css/style.css">
     <!-- Left Slider -->
     <left>
         <VBox id="menu" spacing="10">
             <Label id="menu-title" text="Menu" />
             <!-- <Button text="Home" fx:id="btnHome" onAction="#handleHomeClick"/> -->
-            <Button text="Current Appointments" fx:id="btnAppointments" onAction="#handleAppointmentsClick"/>
+            <Button text="Appointments" fx:id="btnAppointments" onAction="#handleAppointmentsClick"/>
             <Button text="Past Appointments" fx:id="btnPatients" onAction="#handlePatientsClick"/>
             <Button text="Logout" fx:id="btnLogout" onAction="#handleLogoutClick"/>
         </VBox>

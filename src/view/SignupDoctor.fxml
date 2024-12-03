@@ -10,11 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" style="-fx-background-color: #FFFEFE;" stylesheets="@../application/StyleSheet.css" xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignupDoctorController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1550.0" style="-fx-background-color: #FFFEFE;" stylesheets="@../application/StyleSheet.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignupDoctorController">
    <left>
-      <AnchorPane prefHeight="400.0" prefWidth="228.0">
+      <AnchorPane prefHeight="800.0" prefWidth="685.0">
          <children>
-            <ImageView fitHeight="370.0" fitWidth="200.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="700.0" fitWidth="600.0" layoutX="49.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../application/Images/Doctor.png" />
                </image>
@@ -23,71 +23,71 @@
       </AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="400.0" prefWidth="332.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="800.0" prefWidth="865.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="#848383" layoutX="138.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Are you a patient ?">
+            <Text fill="#848383" layoutX="577.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Are you a patient ?">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="PatientLogInLink" fill="#018180" layoutX="209.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="BtnStyle" text="Log In Here">
+            <Text fx:id="PatientLogInLink" fill="#018180" layoutX="722.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="BtnStyle" text="Log In Here">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="38.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+            <Text layoutX="178.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
                <font>
-                  <Font size="8.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="38.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+            <TextField fx:id="FirstNameTextField" layoutX="178.0" layoutY="196.0" prefHeight="50.0" prefWidth="500.0" promptText="First Name" style="-fx-background-color: #FFFEFE; -fx-border-color: #ABABAB; -fx-border-radius: 10;">
                <font>
-                  <Font size="8.0" />
-               </font>
-            </Text>
-            <TextField fx:id="EmailTextField" layoutX="38.0" layoutY="181.0" prefHeight="26.0" prefWidth="216.0" promptText="Email@example.com" style="-fx-background-color: #FFFEFE; -fx-border-color: #ABABAB; -fx-border-radius: 5;">
-               <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </TextField>
-            <Button fx:id="SignUpButtonDoctor" layoutX="38.0" layoutY="277.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="216.0" styleClass="signUpBtn" text="Sign Up" textFill="WHITE">
+            <Text layoutX="178.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
                <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
-            <Text fill="#848383" layoutX="78.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already registered?">
-               <font>
-                  <Font size="8.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
-            <Text fx:id="LogInLink" fill="#018180" layoutX="151.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="BtnStyle" text="Log In Here">
+            <TextField fx:id="LastNameTextField" layoutX="178.0" layoutY="296.0" prefHeight="50.0" prefWidth="500.0" promptText="Last Name" style="-fx-background-color: #FFFEFE; -fx-border-color: #ABABAB; -fx-border-radius: 10;">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Text layoutX="178.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+               <font>
+                  <Font size="18.0" />
                </font>
             </Text>
-            <PasswordField fx:id="PasswordTextField" layoutX="38.0" layoutY="229.0" prefHeight="26.0" prefWidth="216.0" promptText="at leat 8 character" style="-fx-background-color: #FFFEFE; -fx-border-color: #ABABAB; -fx-border-radius: 5;">
+            <TextField fx:id="EmailTextField" layoutX="178.0" layoutY="396.0" prefHeight="50.0" prefWidth="500.0" promptText="Email@example.com" style="-fx-background-color: #FFFEFE; -fx-border-color: #ABABAB; -fx-border-radius: 10;">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Text layoutX="178.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <PasswordField fx:id="PasswordTextField" layoutX="178.0" layoutY="496.0" prefHeight="50.0" prefWidth="500.0" promptText="at least 8 characters" style="-fx-background-color: #FFFEFE; -fx-border-color: #ABABAB; -fx-border-radius: 10;">
+               <font>
+                  <Font size="16.0" />
                </font>
             </PasswordField>
-            <TextField fx:id="EmailTextField1" layoutX="38.0" layoutY="132.0" prefHeight="26.0" prefWidth="216.0" promptText="Last Name" style="-fx-background-color: #FFFEFE; -fx-border-color: #ABABAB; -fx-border-radius: 5;">
+            <Button fx:id="SignUpButtonDoctor" layoutX="178.0" layoutY="596.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="500.0" styleClass="signUpBtn" text="Sign Up" textFill="WHITE">
                <font>
-                  <Font size="8.0" />
+                  <Font size="18.0" />
                </font>
-            </TextField>
-            <Text layoutX="38.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+            </Button>
+            <Text fill="#848383" layoutX="285.0" layoutY="696.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already registered?">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <TextField fx:id="EmailTextField11" layoutX="38.0" layoutY="82.0" prefHeight="26.0" prefWidth="216.0" promptText="First Name" style="-fx-background-color: #FFFEFE; -fx-border-color: #ABABAB; -fx-border-radius: 5;">
+            <Text fx:id="LogInLink" fill="#018180" layoutX="434.0" layoutY="696.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="BtnStyle" text="Log In Here">
                <font>
-                  <Font size="8.0" />
-               </font>
-            </TextField>
-            <Text layoutX="38.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
-               <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
          </children>

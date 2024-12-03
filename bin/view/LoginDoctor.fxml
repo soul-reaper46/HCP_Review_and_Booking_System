@@ -10,65 +10,72 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" style="-fx-background-color: #FFFEFE;" stylesheets="@../application/StyleSheet.css" xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginDoctorController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1550.0" style="-fx-background-color: #FFFEFE;" stylesheets="@../application/StyleSheet.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginDoctorController">
    <left>
-      <AnchorPane prefHeight="400.0" prefWidth="228.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="800.0" prefWidth="685.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="370.0" fitWidth="200.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="rounded-image">
+            <ImageView fitHeight="710.0" fitWidth="595.0" layoutX="45.0" layoutY="45.0" opacity="0.91" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../application/Images/Doctor.png" />
-               </image></ImageView>
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="400.0" prefWidth="332.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="800.0" prefWidth="865.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="35.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+            <Text layoutX="184.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
                <font>
-                  <Font size="8.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="35.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back" />
-            <Text layoutX="35.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+            <Text layoutX="184.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back">
                <font>
-                  <Font size="8.0" />
+                  <Font size="36.0" />
                </font>
             </Text>
-            <TextField fx:id="EmailTextField" layoutX="35.0" layoutY="148.0" prefHeight="26.0" prefWidth="216.0" promptText="Email@example.com" style="-fx-background-color: #FFFEFE; -fx-border-color: #ABABAB; -fx-border-radius: 5;">
+            <Text layoutX="184.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
                <font>
-                  <Font size="8.0" />
-               </font></TextField>
-            <Button fx:id="LoginButtonDoctor" layoutX="35.0" layoutY="260.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="216.0" style="-fx-border-radius: 5;" styleClass="loginBtn" text="Log In" textFill="WHITE">
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="EmailTextField" layoutX="184.0" layoutY="323.0" prefHeight="50.0" prefWidth="500.0" promptText="Email@example.com" style="-fx-background-color: #FFFEFE; -fx-border-color: #ABABAB; -fx-border-radius: 10;">
                <font>
-                  <Font size="10.0" />
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Button fx:id="LoginButtonDoctor" layoutX="184.0" layoutY="547.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="500.0" style="-fx-border-radius: 10;" styleClass="loginBtn" stylesheets="@../application/StyleSheet.css" text="Log In" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
                </font>
             </Button>
-            <Text fill="#848383" layoutX="75.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not registered yet?">
+            <Text fill="#848383" layoutX="309.0" layoutY="663.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not registered yet?">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="SignUpLink" fill="#018180" layoutX="148.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="BtnStyle" text="Create an Account">
+            <Text fx:id="SignUpLink" fill="#018180" layoutX="461.0" layoutY="664.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="BtnStyle" text="Create an Account">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text fill="#848383" layoutX="138.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Are you a patient ?">
+            <Text fill="#848383" layoutX="585.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Are you a patient ?">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="PatientLogInLink" fill="#018180" layoutX="209.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="BtnStyle" text="Log In Here">
+            <Text fx:id="PatientLogInLink" fill="#018180" layoutX="730.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="BtnStyle" text="Log In Here">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <PasswordField fx:id="PasswordTextField" layoutX="35.0" layoutY="200.0" prefHeight="26.0" prefWidth="216.0" promptText="at leat 8 character" style="-fx-background-color: #FFFEFE; -fx-border-color: #ABABAB; -fx-border-radius: 5;">
+            <PasswordField fx:id="PasswordTextField" layoutX="184.0" layoutY="429.0" prefHeight="50.0" prefWidth="500.0" promptText="at least 8 characters" style="-fx-background-color: #FFFEFE; -fx-border-color: #ABABAB; -fx-border-radius: 10;">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </PasswordField>
-         </children></AnchorPane>
+         </children>
+      </AnchorPane>
    </right>
 </BorderPane>

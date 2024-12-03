@@ -3,10 +3,13 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
+
+import application.Main;
 
 public class DoctorDashboardController {
 
@@ -39,9 +42,11 @@ public class DoctorDashboardController {
 
     @FXML
     private void handleLogoutClick() {
-        // Implement logout functionality here
-        System.out.println("Logout clicked!");
+        	Main.changeScene("/view/LoginDoctor.fxml");
+        
     }
+
+
 
     private void loadPage(String pageName) {
         try {

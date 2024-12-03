@@ -2,11 +2,13 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Data {
-    private static ArrayList<Patient> patients = new ArrayList<>();
-    private static ArrayList<Doctor> doctors = new ArrayList<>();
-    private static ArrayList<Appointment> appointments = new ArrayList<>();
+	private static List<Patient> patients = new ArrayList<>();
+    private static List<Doctor> doctors = new ArrayList<>();
+    private static List<Appointment> appointments = new ArrayList<>();
     private static int loggedInUserId;
 
     // Static block to initialize the data
@@ -36,23 +38,71 @@ public class Data {
                 "L-5678 (General Practice)", 4.9, "General Practitioner", "General checkup", "Common ailments",
                 "Compassionate", 250.0, 12));
 
-        // Sample Appointments
+     // Sample Appointments using Iterators
         LocalDate today = LocalDate.now();
         int appointmentId = 1;
 
-        for (Doctor doctor : doctors) {
+        Iterator<Doctor> doctorIterator = doctors.iterator();
+        while (doctorIterator.hasNext()) {
+            Doctor doctor = doctorIterator.next();
+
+            Iterator<Patient> patientIterator = patients.iterator();
+            int patientIndex = 0;
+
             // Generate 6 appointments for each doctor
             for (int i = 0; i < 6; i++) {
-                LocalDate appointmentDate = today.plusDays(i % 3); // Spread appointments over 3 dates
-                Patient patient = patients.get(i % patients.size()); // Cycle through patients
-                appointments.add(new Appointment(appointmentId++, today, appointmentDate, doctor.getDoctorId(), patient.getPatientId(),
-                        "General Checkup", "No previous medication"));
+                if (!patientIterator.hasNext()) {
+                    patientIterator = patients.iterator(); // Reset patient iterator if it reaches the end
+                }
+                Patient patient = patientIterator.next();
+                LocalDate appointmentDate = today.plusDays(i % 4); // Spread appointments over 3 dates
+
+                appointments.add(new Appointment(
+                    appointmentId++, 
+                    today, 
+                    appointmentDate, 
+                    doctor.getDoctorId(), 
+                    patient.getPatientId(),
+                    "General Checkup", 
+                    "No previous medication"
+                ));
             }
         }
+        
+     // Sample Past Appointments using Iterators
+        LocalDate today1 = LocalDate.now();
+        int pastAppointmentId = 100; // Start IDs for past appointments to differentiate them
+
+        Iterator<Doctor> doctorIteratorForPast = doctors.iterator();
+        while (doctorIteratorForPast.hasNext()) {
+            Doctor doctor = doctorIteratorForPast.next();
+
+            Iterator<Patient> patientIteratorForPast = patients.iterator();
+
+            // Generate 6 past appointments for each doctor
+            for (int i = 0; i < 6; i++) {
+                if (!patientIteratorForPast.hasNext()) {
+                    patientIteratorForPast = patients.iterator(); // Reset patient iterator if it reaches the end
+                }
+                Patient patient = patientIteratorForPast.next();
+                LocalDate appointmentDate = today1.minusDays((i + 1) * 3); // Spread appointments 3 days apart in the past
+
+                appointments.add(new Appointment(
+                    pastAppointmentId++, 
+                    appointmentDate.minusDays(5), // Set booking date 5 days before the appointment date
+                    appointmentDate, 
+                    doctor.getDoctorId(), 
+                    patient.getPatientId(),
+                    "Follow-up Checkup", 
+                    "Previous medication prescribed"
+                ));
+            }
+        }
+
     }
 
-    // Getter for patients
-    public static ArrayList<Patient> getPatients() {
+ // Getter for patients
+    public static List<Patient> getPatients() {
         return patients;
     }
 
@@ -61,8 +111,8 @@ public class Data {
         patients.add(patient);
     }
 
-    // Getter for doctors
-    public static ArrayList<Doctor> getDoctors() {
+ // Getter for doctors
+    public static List<Doctor> getDoctors() {
         return doctors;
     }
 
@@ -71,8 +121,8 @@ public class Data {
         doctors.add(doctor);
     }
 
-    // Getter for appointments
-    public static ArrayList<Appointment> getAppointments() {
+ // Getter for appointments
+    public static List<Appointment> getAppointments() {
         return appointments;
     }
 

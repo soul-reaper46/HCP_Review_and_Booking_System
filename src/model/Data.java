@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Data {
     private static ArrayList<Patient> patients = new ArrayList<>();
     private static ArrayList<Doctor> doctors = new ArrayList<>();
+    private static ArrayList<Appointment> appointments = new ArrayList<>();
     private static int loggedInUserId;
 
     // Static block to initialize the data
@@ -34,6 +35,20 @@ public class Data {
         doctors.add(new Doctor("Dr. Green", "8899001122", "green@hospital.com", "green456", 105,
                 "L-5678 (General Practice)", 4.9, "General Practitioner", "General checkup", "Common ailments",
                 "Compassionate", 250.0, 12));
+
+        // Sample Appointments
+        LocalDate today = LocalDate.now();
+        int appointmentId = 1;
+
+        for (Doctor doctor : doctors) {
+            // Generate 6 appointments for each doctor
+            for (int i = 0; i < 6; i++) {
+                LocalDate appointmentDate = today.plusDays(i % 3); // Spread appointments over 3 dates
+                Patient patient = patients.get(i % patients.size()); // Cycle through patients
+                appointments.add(new Appointment(appointmentId++, today, appointmentDate, doctor.getDoctorId(), patient.getPatientId(),
+                        "General Checkup", "No previous medication"));
+            }
+        }
     }
 
     // Getter for patients
@@ -55,7 +70,17 @@ public class Data {
     public static void addDoctor(Doctor doctor) {
         doctors.add(doctor);
     }
-    
+
+    // Getter for appointments
+    public static ArrayList<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    // Setter for adding a new appointment
+    public static void addAppointment(Appointment appointment) {
+        appointments.add(appointment);
+    }
+
     public static int getLoggedInUserId() {
         return loggedInUserId;
     }

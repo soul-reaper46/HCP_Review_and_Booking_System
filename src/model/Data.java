@@ -6,9 +6,10 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Data {
-	private static List<Patient> patients = new ArrayList<>();
+    private static List<Patient> patients = new ArrayList<>();
     private static List<Doctor> doctors = new ArrayList<>();
     private static List<Appointment> appointments = new ArrayList<>();
+    private static List<Feedback> feedbackList = new ArrayList<>(); // Added list for feedback
     private static int loggedInUserId;
 
     // Static block to initialize the data
@@ -38,7 +39,7 @@ public class Data {
                 "L-5678 (General Practice)", 4.9, "General Practitioner", "General checkup", "Common ailments",
                 "Compassionate", 250.0, 12));
 
-     // Sample Appointments using Iterators
+        // Sample Appointments using Iterators
         LocalDate today = LocalDate.now();
         int appointmentId = 1;
 
@@ -47,7 +48,6 @@ public class Data {
             Doctor doctor = doctorIterator.next();
 
             Iterator<Patient> patientIterator = patients.iterator();
-            int patientIndex = 0;
 
             // Generate 6 appointments for each doctor
             for (int i = 0; i < 6; i++) {
@@ -58,18 +58,18 @@ public class Data {
                 LocalDate appointmentDate = today.plusDays(i % 4); // Spread appointments over 3 dates
 
                 appointments.add(new Appointment(
-                    appointmentId++, 
-                    today, 
-                    appointmentDate, 
-                    doctor.getDoctorId(), 
-                    patient.getPatientId(),
-                    "General Checkup", 
-                    "No previous medication"
+                        appointmentId++,
+                        today,
+                        appointmentDate,
+                        doctor.getDoctorId(),
+                        patient.getPatientId(),
+                        "General Checkup",
+                        "No previous medication"
                 ));
             }
         }
-        
-     // Sample Past Appointments using Iterators
+
+        // Sample Past Appointments using Iterators
         LocalDate today1 = LocalDate.now();
         int pastAppointmentId = 100; // Start IDs for past appointments to differentiate them
 
@@ -88,20 +88,25 @@ public class Data {
                 LocalDate appointmentDate = today1.minusDays((i + 1) * 3); // Spread appointments 3 days apart in the past
 
                 appointments.add(new Appointment(
-                    pastAppointmentId++, 
-                    appointmentDate.minusDays(5), // Set booking date 5 days before the appointment date
-                    appointmentDate, 
-                    doctor.getDoctorId(), 
-                    patient.getPatientId(),
-                    "Follow-up Checkup", 
-                    "Previous medication prescribed"
+                        pastAppointmentId++,
+                        appointmentDate.minusDays(5), // Set booking date 5 days before the appointment date
+                        appointmentDate,
+                        doctor.getDoctorId(),
+                        patient.getPatientId(),
+                        "Follow-up Checkup",
+                        "Previous medication prescribed"
                 ));
             }
         }
 
+        // Sample Feedback
+        feedbackList.add(new Feedback(101, 5, 4, 5, 3, "Great experience with Dr. Smith, very professional!"));
+        feedbackList.add(new Feedback(102, 4, 4, 4, 4, "Dr. Brown was friendly and helpful."));
+        feedbackList.add(new Feedback(103, 5, 5, 5, 4, "Dr. White is very caring and knowledgeable."));
+        // Add more feedback as needed
     }
 
- // Getter for patients
+    // Getter for patients
     public static List<Patient> getPatients() {
         return patients;
     }
@@ -111,7 +116,7 @@ public class Data {
         patients.add(patient);
     }
 
- // Getter for doctors
+    // Getter for doctors
     public static List<Doctor> getDoctors() {
         return doctors;
     }
@@ -121,7 +126,7 @@ public class Data {
         doctors.add(doctor);
     }
 
- // Getter for appointments
+    // Getter for appointments
     public static List<Appointment> getAppointments() {
         return appointments;
     }
@@ -131,10 +136,17 @@ public class Data {
         appointments.add(appointment);
     }
 
+    // Getter for feedbackList
+    public static List<Feedback> getFeedbackList() {
+        return feedbackList; // This is the new method for feedback
+    }
+
+    // Getter for loggedInUserId
     public static int getLoggedInUserId() {
         return loggedInUserId;
     }
 
+    // Setter for loggedInUserId
     public static void setLoggedInUserId(int userId) {
         loggedInUserId = userId;
     }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" prefHeight="800.0" prefWidth="1550.0" spacing="20" style="-fx-background-color: #f0f0f0; -fx-padding: 20;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="controller.DoctorRatingController">
+    
+    <Text style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Doctor Rating" />
+    
+    <!-- Doctor ComboBox (if needed) -->
+    <ComboBox fx:id="doctorComboBox" prefWidth="250" promptText="Select Doctor" />
+
+    <!-- Rating Controls (if needed) -->
+    <!-- Rating Stars or Slider can be added here -->
+
+    <!-- Submit Rating Button (if needed) -->
+    <Button prefWidth="250" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Submit Rating" />
+
+    <!-- Back Button -->
+    <Button fx:id="backButton" onAction="#handleBackButton" prefWidth="250" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Back" />
+
+</VBox>

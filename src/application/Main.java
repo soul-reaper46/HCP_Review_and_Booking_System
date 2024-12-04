@@ -2,11 +2,13 @@ package application;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.stage.Screen;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.geometry.Rectangle2D;
 import model.Data;
 
 public class Main extends Application {
@@ -24,11 +26,18 @@ public class Main extends Application {
             database = Database.getInstance();
             primaryStageObj = primaryStage;
             Parent root = FXMLLoader.load(getClass().getResource("/view/LoginDoctor.fxml"));
-            primaryStage.setTitle("HCP_Review_and_Booking_System");
-            Scene scene = new Scene(root, 1550, 800);
+            primaryStage.setTitle("HCP Review and Booking System");
+
+            // Get screen dimensions for full-screen mode
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+            Scene scene = new Scene(root, screenBounds.getWidth(), screenBounds.getHeight());
             scene.getStylesheets().add(getClass().getResource("StyleSheet.css").toExternalForm());
+
+            // Allow resize and display maximize/minimize/close buttons
+            primaryStage.setResizable(true);
+            primaryStage.setMaximized(true);
+            // Set the scene and show the stage
             primaryStage.setScene(scene);
-            primaryStage.setResizable(false);
             primaryStage.show();
         } catch (Exception e) {
             showError("Error loading application", e.getMessage());
@@ -43,15 +52,15 @@ public class Main extends Application {
             if (fxml.contains("Dashboard")) {
                 primaryStageObj.setResizable(true);
                 primaryStageObj.setMaximized(true);
-                Scene dashboardScene = new Scene(pane, 1800, 800);
+                Scene dashboardScene = new Scene(pane, Screen.getPrimary().getVisualBounds().getWidth(),
+                        Screen.getPrimary().getVisualBounds().getHeight());
                 dashboardScene.getStylesheets().add(Main.class.getResource("/css/Style.css").toExternalForm());
                 primaryStageObj.setScene(dashboardScene);
             } else {
-                primaryStageObj.setResizable(false);
-                if (primaryStageObj.isMaximized()) {
-                    primaryStageObj.setMaximized(false);
-                }
-                Scene loginScene = new Scene(pane, 1550, 800);
+                primaryStageObj.setResizable(true);
+                primaryStageObj.setMaximized(true);
+                Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+                Scene loginScene = new Scene(pane, screenBounds.getWidth(), screenBounds.getHeight());
                 loginScene.getStylesheets().add(Main.class.getResource("StyleSheet.css").toExternalForm());
                 primaryStageObj.setScene(loginScene);
             }

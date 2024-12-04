@@ -95,7 +95,7 @@ public class AppointmentBookingController {
 
             Data.addAppointment(newAppointment);
             showAlert("Success", "Appointment booked successfully!", AlertType.INFORMATION);
-            Main.changeScene("/view/DoctorRating.fxml");  // Redirect to the Doctor Rating page
+            Main.changeScene("/view/PatientDashboard.fxml");  // Redirect to the Doctor Rating page
         } else {
             showAlert("Error", "Patient not found", AlertType.ERROR);
         }

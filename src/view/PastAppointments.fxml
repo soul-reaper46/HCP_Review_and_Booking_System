@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.PastAppointmentsController">
+    <top>
+        <ToolBar>
+            <Region HBox.hgrow="ALWAYS"/> <!-- Replace Spacer with Region -->
+            <Label text="Past Appointments" style="-fx-font-size: 16px; font-weight: bold;" />
+        </ToolBar>
+    </top>
+
+    <center>
+        <TableView fx:id="tblPastAppointments" prefWidth="500" prefHeight="500">
+            <columns>
+                <TableColumn fx:id="colDoctorName" text="Doctor" prefWidth="250" />
+                <TableColumn fx:id="colAppointmentDate" text="Appointment Date" prefWidth="200" />
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER">
+            <Button text="Back to Dashboard" onAction="#handleBackToDashboard" />
+        </HBox>
+    </bottom>
+</BorderPane>

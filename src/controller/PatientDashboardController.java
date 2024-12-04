@@ -1,31 +1,38 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.scene.Node;
+import model.Appointment;
+import model.Data;
+
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import application.Main;
 
 public class PatientDashboardController {
+    @FXML
+    private BorderPane rootPane;
 
     @FXML
     private Label navbarTitle;
 
     @FXML
-    private Label welcomeMessage;
+    private TableView<Appointment> tblCurrentAppointments;
 
     @FXML
-    private TableView<?> tblCurrentAppointments;
-
-    @FXML
-    private TableView<?> tblPastAppointments;
+    private TableView<Appointment> tblPastAppointments;
 
     @FXML
     private TextField txtPatientName;
@@ -51,35 +58,45 @@ public class PatientDashboardController {
     @FXML
     private Button btnLogout;
 
-    // This method handles booking a new appointment
+    public void initialize() {
+        // Load AppointmentBooking.fxml by default
+        loadPage("AppointmentBooking");
+    }
+
     @FXML
     private void handleBookNewAppointmentClick(ActionEvent event) {
-        System.out.println("Book New Appointment clicked.");
-        // Add your logic to open the new appointment booking section
+        loadPage("AppointmentBooking");
     }
 
-    // This method handles viewing the current appointments
     @FXML
     private void handleAppointmentsClick(ActionEvent event) {
-        System.out.println("Viewing current appointments...");
-        // Example: Fetch current appointments from a database and populate tblCurrentAppointments
+        try {
+            // Load the Current Appointments view
+            Parent currentAppointments = FXMLLoader.load(getClass().getResource("/view/CurrentAppointments.fxml"));
+            
+            // Set the Current Appointments view in the center of the BorderPane
+            rootPane.setCenter(currentAppointments);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    // This method handles viewing past appointments
     @FXML
     private void handlePatientsClick(ActionEvent event) {
-        System.out.println("Viewing past appointments...");
-        // Example: Fetch past appointments from a database and populate tblPastAppointments
+        try {
+            Parent pastAppointments = FXMLLoader.load(getClass().getResource("/view/PastAppointments.fxml"));
+            BorderPane parentPane = (BorderPane)((Node)event.getSource()).getScene().getRoot();
+            parentPane.setCenter(pastAppointments);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    // This method handles reviewing a doctor
     @FXML
     private void handleReviewDoctorClick(ActionEvent event) {
-        System.out.println("Review Doctor clicked.");
-        // Add your logic to review a doctor
+        loadPage("DoctorRating");
     }
 
-    // This method handles registering a new appointment
     @FXML
     private void handleRegisterAppointmentClick(ActionEvent event) {
         String patientName = txtPatientName.getText();
@@ -91,36 +108,50 @@ public class PatientDashboardController {
             return;
         }
 
-        // Add your logic to register the appointment
+        // Logic for registering appointment
         System.out.println("Registering new appointment for " + patientName + " on " + appointmentDate + " at " + appointmentTime);
-        
+
         // Example: Save the appointment in a database
-        
-        // Clear the form after successful registration
+        // Clear the form
         txtPatientName.clear();
         txtAppointmentDate.clear();
         txtAppointmentTime.clear();
     }
 
-    // This method handles logging out and loads the "LoginDoctor.fxml" screen
     @FXML
     private void handleLogoutClick(ActionEvent event) {
         System.out.println("Logging out...");
-        
+        Main.changeScene("/view/LoginDoctor.fxml");
+    }
+
+    private void loadPage(String pageName) {
         try {
-            // Load the LoginDoctor.fxml file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoginDoctor.fxml"));
-            Parent loginRoot = loader.load();
-
-            // Get the current stage (window) and set the new scene (login scene)
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene loginScene = new Scene(loginRoot);
-            stage.setScene(loginScene);
-            stage.show();
-
+            Node page = FXMLLoader.load(getClass().getResource("/view/" + pageName + ".fxml"));
+            rootPane.setCenter(page);
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Error loading the LoginDoctor.fxml file.");
         }
+    }
+
+    private void loadCurrentAppointments() {
+        int loggedInPatientId = Data.getLoggedInUserId();
+        List<Appointment> currentAppointments = Data.getAppointments().stream()
+                .filter(appointment -> appointment.getPatientId() == loggedInPatientId &&
+                        appointment.getAppointmentDate().isAfter(LocalDate.now()))
+                .collect(Collectors.toList());
+
+        ObservableList<Appointment> observableList = FXCollections.observableArrayList(currentAppointments);
+        tblCurrentAppointments.setItems(observableList);
+    }
+
+    private void loadPastAppointments() {
+        int loggedInPatientId = Data.getLoggedInUserId();
+        List<Appointment> pastAppointments = Data.getAppointments().stream()
+                .filter(appointment -> appointment.getPatientId() == loggedInPatientId &&
+                        appointment.getAppointmentDate().isBefore(LocalDate.now()))
+                .collect(Collectors.toList());
+
+        ObservableList<Appointment> observableList = FXCollections.observableArrayList(pastAppointments);
+        tblPastAppointments.setItems(observableList);
     }
 }

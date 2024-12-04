@@ -5,24 +5,23 @@
 <?import javafx.geometry.Insets?>
 
 <VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controller.AppointmentsViewDoctorController"
-      spacing="10"
-      alignment="TOP_CENTER"
-      styleClass="appointments-view">
-    
-    <!-- Top Bar -->
-    <HBox spacing="20" alignment="CENTER" styleClass="top-bar">
-        <Label text="Appointments" styleClass="title-label"/>
-        <DatePicker fx:id="datePicker" onAction="#handleDateChange"/>
-    </HBox>
-    
-    <!-- Appointment Accordion -->
-    <ScrollPane fitToWidth="true" styleClass="scroll-pane">
-        <VBox fx:id="accordionContainer" spacing="10" alignment="TOP_CENTER">
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
-            </padding>
-        </VBox>
-    </ScrollPane>
+	xmlns:fx="http://javafx.com/fxml"
+	fx:controller="controller.AppointmentsViewDoctorController"
+	spacing="10" alignment="TOP_CENTER" styleClass="appointments-view">
+
+	<!-- Top Bar -->
+	<HBox spacing="20" alignment="CENTER" styleClass="top-bar">
+		<Label text="Appointments" styleClass="title-label" />
+		<DatePicker fx:id="datePicker" onAction="#handleDateChange" />
+	</HBox>
+
+	<!-- Appointment Accordion -->
+	<ScrollPane fitToWidth="true" styleClass="scroll-pane">
+		<VBox fx:id="accordionContainer" spacing="10"
+			alignment="TOP_CENTER">
+			<padding>
+				<Insets top="10" right="10" bottom="10" left="10" />
+			</padding>
+		</VBox>
+	</ScrollPane>
 </VBox>

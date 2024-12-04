@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="800.0" prefWidth="1550.0" spacing="20" style="-fx-background-color: #f0f0f0; -fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AppointmentBookingController">
+<VBox alignment="CENTER" prefHeight="800.0" prefWidth="1550.0" spacing="20" style="-fx-background-color: #f0f0f0; -fx-padding: 20;" xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AppointmentBookingController">
     
     <Text style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Appointment Booking" />
     
@@ -32,7 +32,6 @@
     <!-- Book Appointment Button -->
     <Button fx:id="bookAppointmentButton" onAction="#handleBookAppointment" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" styleClass="Btn" text="Book Appointment" />
 
-    <!-- Back Button -->
-    <Button fx:id="backButton" onAction="#handleBackButton" prefHeight="35.0" prefWidth="250" style="-fx-background-color: #f44336; -fx-text-fill: white;" styleClass="Btn" text="Back" />
+   
 
 </VBox>

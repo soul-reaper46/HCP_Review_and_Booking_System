@@ -21,7 +21,8 @@ public class Data {
                 LocalDate.of(1985, 7, 15), "A-", "Ibuprofen", "Allergy", "Dr. Brown"));
         patients.add(new Patient("Emily Johnson", "1122334455", "emily.johnson@example.com", "emily123", 3, 170, 68,
                 "None", LocalDate.of(1992, 3, 12), "B+", "Amoxicillin", "Infection", "Dr. White"));
-        patients.add(new Patient("Michael Brown", "2233445566", "michael.brown@example.com", "michael123", 4, 175, 80,
+        patients.add(new Patient("Michael Brown", 
+        		"2233445566", "michael.brown@example.com", "michael123", 4, 175, 80,
                 "Gluten", LocalDate.of(1988, 11, 8), "AB+", "Antihistamines", "Asthma", "Dr. Black"));
         patients.add(new Patient("Sophia Lee", "3344556677", "sophia.lee@example.com", "sophia123", 5, 160, 55,
                 "Lactose", LocalDate.of(1995, 9, 22), "O-", "Vitamin C", "Cold", "Dr. Green"));

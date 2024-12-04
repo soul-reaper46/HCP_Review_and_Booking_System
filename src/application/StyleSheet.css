@@ -46,3 +46,23 @@
     -fx-scale-y: 0.95;
     -fx-scale-x: 0.95;
 }
+
+.Btn {
+    
+    -fx-text-fill: #FFF;
+    -fx-cursor: hand;
+    -fx-background-radius: 5px;
+}
+
+.Btn:hover {
+    -fx-background-color: transparent;
+    -fx-text-fill: #018180;
+    -fx-border-color: #018180;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+}
+
+.Btn:pressed {
+    -fx-scale-y: 0.95;
+    -fx-scale-x: 0.95;
+}

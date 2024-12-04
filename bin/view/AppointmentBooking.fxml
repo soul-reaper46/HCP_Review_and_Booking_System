@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.AppointmentBookingController" spacing="20" alignment="CENTER" style="-fx-background-color: #f0f0f0; -fx-padding: 20;">
+    
+    <Text text="Appointment Booking" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    
+    <!-- Doctor ComboBox -->
+    <ComboBox fx:id="doctorComboBox" promptText="Select Doctor" prefWidth="250"/>
+    
+    <!-- Appointment Type ComboBox -->
+    <ComboBox fx:id="appointmentTypeComboBox" promptText="Select Appointment Type" prefWidth="250"/>
+
+    <!-- Patient Name Field (Non-editable) -->
+    <TextField fx:id="patientName" promptText="Enter Your Name" prefWidth="250" editable="false"/>
+    
+    <!-- Patient Email Field (Non-editable) -->
+    <TextField fx:id="patientEmail" promptText="Enter Your Email" prefWidth="250" editable="false"/>
+
+    <!-- Appointment Date Picker -->
+    <DatePicker fx:id="appointmentDatePicker" promptText="Select Appointment Date" prefWidth="250"/>
+
+    <!-- Appointment Time Field -->
+    <TextField fx:id="appointmentTime" promptText="Enter Appointment Time (HH:mm)" prefWidth="250"/>
+
+    <!-- Book Appointment Button -->
+    <Button fx:id="bookAppointmentButton" text="Book Appointment" prefWidth="250" onAction="#handleBookAppointment" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+
+    <!-- Back Button -->
+    <Button fx:id="backButton" text="Back" prefWidth="250" onAction="#handleBackButton" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+
+</VBox>

@@ -1,65 +1,94 @@
 package controller;
 
+import application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import application.Main;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Slider;
+import javafx.scene.control.Alert.AlertType;
 import model.Data;
-import model.Doctor;
+import model.Feedback;
 
 public class DoctorRatingController {
 
     @FXML private ComboBox<String> doctorComboBox;
-    @FXML private TextField ratingField;
-    @FXML private TextArea feedbackField;
-    @FXML private Button submitButton;
-    @FXML private Button backButton;  // Back button to navigate back to the AppointmentBooking screen
+    @FXML private Slider analysisRatingSlider;
+    @FXML private Slider treatmentRatingSlider;
+    @FXML private Slider behaviourRatingSlider;
+    @FXML private Slider costRatingSlider;
+    @FXML private Button submitRatingButton;
+    @FXML private Button backButton;
 
     @FXML
     private void initialize() {
-        // Populate doctors into the ComboBox
+        // Populate doctor names into the combo box
         ObservableList<String> doctorNames = FXCollections.observableArrayList();
-        for (Doctor doctor : Data.getDoctors()) {
-            if (doctor != null && doctor.getName() != null) {
-                doctorNames.add(doctor.getName());
-            }
-        }
+        Data.getDoctors().forEach(doctor -> doctorNames.add(doctor.getName()));
         doctorComboBox.setItems(doctorNames);
     }
 
     @FXML
     private void handleSubmitButton() {
         String selectedDoctor = doctorComboBox.getValue();
-        String rating = ratingField.getText();
-        String feedback = feedbackField.getText();
 
-        if (selectedDoctor != null && !rating.isEmpty() && !feedback.isEmpty()) {
-            System.out.println("Rating submitted:");
-            System.out.println("Doctor: " + selectedDoctor);
-            System.out.println("Rating: " + rating);
-            System.out.println("Feedback: " + feedback);
-
-            // Reset fields after submission
-            doctorComboBox.getSelectionModel().clearSelection();
-            ratingField.clear();
-            feedbackField.clear();
-        } else {
-            System.out.println("Please fill in all fields.");
+        if (selectedDoctor == null) {
+            showAlert("Error", "Please select a doctor.", AlertType.ERROR);
+            return;
         }
+
+        // Collect ratings from sliders
+        int analysisRating = (int) analysisRatingSlider.getValue();
+        int treatmentRating = (int) treatmentRatingSlider.getValue();
+        int behaviourRating = (int) behaviourRatingSlider.getValue();
+        int costRating = (int) costRatingSlider.getValue();
+
+        // Find the doctor's ID based on their name
+        int doctorId = Data.getDoctors().stream()
+                .filter(doctor -> doctor.getName().equals(selectedDoctor))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Doctor not found"))
+                .getDoctorId();
+
+        // Create a Feedback object
+        Feedback feedback = new Feedback(
+                doctorId,
+                analysisRating,
+                treatmentRating,
+                behaviourRating,
+                costRating,
+                ""); // You can optionally add textual feedback here
+
+        // Add the feedback to the feedbackList in Data class
+        Data.addFeedback(feedback);
+
+        // Show success alert
+        showAlert("Success", "Rating submitted successfully!", AlertType.INFORMATION);
+
+        // Reset the fields
+        doctorComboBox.getSelectionModel().clearSelection();
+        analysisRatingSlider.setValue(3);
+        treatmentRatingSlider.setValue(3);
+        behaviourRatingSlider.setValue(3);
+        costRatingSlider.setValue(3);
     }
 
     @FXML
     private void handleBackButton() {
         try {
-            // Navigate back to the AppointmentBooking screen
+            // Navigate back to the LoginDoctor screen
             Main.changeScene("/view/LoginDoctor.fxml");
         } catch (Exception e) {
-            System.err.println("Error navigating to AppointmentBooking.fxml: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    private void showAlert(String title, String content, AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

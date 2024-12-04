@@ -8,10 +8,10 @@ import application.Main;
 import application.Database;
 
 public class SignupPatientController {
-    @FXML private TextField EmailTextField;
-    @FXML private TextField EmailTextField1;
-    @FXML private TextField EmailTextField11;
-    @FXML private PasswordField PasswordTextField;
+	@FXML private TextField FirstNameTextField;
+	@FXML private TextField LastNameTextField;   
+	@FXML private TextField EmailTextField;       
+	@FXML private PasswordField PasswordTextField; 
     @FXML private Button SignUpButtonPatient;
     @FXML private Text LogInLink;
     @FXML private Text DoctorLogInLink;
@@ -24,8 +24,8 @@ public class SignupPatientController {
     }
     
     private void handleSignUp() {
-        String firstName = EmailTextField1.getText().trim();
-        String lastName = EmailTextField11.getText().trim();
+        String firstName = FirstNameTextField.getText().trim();
+        String lastName = LastNameTextField.getText().trim();
         String email = EmailTextField.getText().trim();
         String password = PasswordTextField.getText();
         

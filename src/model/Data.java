@@ -104,7 +104,6 @@ public class Data {
         feedbackList.add(new Feedback(101, 5, 4, 5, 3, "Great experience with Dr. Smith, very professional!"));
         feedbackList.add(new Feedback(102, 4, 4, 4, 4, "Dr. Brown was friendly and helpful."));
         feedbackList.add(new Feedback(103, 5, 5, 5, 4, "Dr. White is very caring and knowledgeable."));
-        // Add more feedback as needed
     }
 
     // Getter for patients
@@ -137,9 +136,14 @@ public class Data {
         appointments.add(appointment);
     }
 
+    // Method to add feedback to the feedbackList
+    public static void addFeedback(Feedback feedback) {
+        feedbackList.add(feedback);
+    }
+
     // Getter for feedbackList
     public static List<Feedback> getFeedbackList() {
-        return feedbackList; // This is the new method for feedback
+        return feedbackList;
     }
 
     // Getter for loggedInUserId

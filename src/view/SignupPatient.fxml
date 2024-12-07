@@ -88,7 +88,7 @@
          <children>
             <ImageView fitHeight="700.0" fitWidth="600.0" layoutX="49.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../application/Images/Patient.jpeg" />
+                  <Image url="@../application/Images/Patient.png" />
                </image>
                <viewport>
                   <Rectangle2D />

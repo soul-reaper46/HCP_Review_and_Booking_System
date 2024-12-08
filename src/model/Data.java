@@ -9,7 +9,7 @@ public class Data {
     private static List<Patient> patients = new ArrayList<>();
     private static List<Doctor> doctors = new ArrayList<>();
     private static List<Appointment> appointments = new ArrayList<>();
-    private static List<Feedback> feedbackList = new ArrayList<>(); // Added list for feedback
+    private static List<Feedback> feedbackList = new ArrayList<>(); 
     private static int loggedInUserId;
 
     // Static block to initialize the data
@@ -56,7 +56,7 @@ public class Data {
                     patientIterator = patients.iterator(); // Reset patient iterator if it reaches the end
                 }
                 Patient patient = patientIterator.next();
-                LocalDate appointmentDate = today.plusDays(i % 4); // Spread appointments over 3 dates
+                LocalDate appointmentDate = today.plusDays(i % 4); // Spread appointments over 4 dates
 
                 appointments.add(new Appointment(
                         appointmentId++,

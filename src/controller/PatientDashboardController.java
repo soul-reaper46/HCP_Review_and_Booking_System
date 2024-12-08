@@ -111,7 +111,7 @@ public class PatientDashboardController {
         // Logic for registering appointment
         System.out.println("Registering new appointment for " + patientName + " on " + appointmentDate + " at " + appointmentTime);
 
-        // Example: Save the appointment in a database
+        
         // Clear the form
         txtPatientName.clear();
         txtAppointmentDate.clear();

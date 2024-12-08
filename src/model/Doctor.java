@@ -97,6 +97,11 @@ public class Doctor extends Person {
 	public void setExperienceYears(int experienceYears) {
 		this.experienceYears = experienceYears;
 	}
+	
+	@Override
+    public void displayInfo() {
+        System.out.println("Doctor: " + getName() + ", License: " + licenseNumber);
+    }
 
     
 }

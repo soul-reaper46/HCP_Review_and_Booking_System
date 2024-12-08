@@ -45,4 +45,6 @@ public abstract class Person {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public abstract void displayInfo(); // Abstract method
 }

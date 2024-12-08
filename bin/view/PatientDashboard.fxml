@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TextField?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PatientDashboardController" fx:id="rootPane" stylesheets="@../css/style.css">
+<BorderPane xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PatientDashboardController" fx:id="rootPane" stylesheets="@../css/style.css">
     
     <!-- Left Slider -->
     <left>

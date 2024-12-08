@@ -69,7 +69,6 @@ public class PastAppointmentsViewDoctorController {
 
     @FXML
     public void handleBackAction() {
-        // Handle the back action (for navigation)
-        // This can be used to go back to the previous screen or dashboard
+        //TODO
     }
 }

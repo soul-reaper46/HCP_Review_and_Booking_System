@@ -32,7 +32,7 @@ public class Patient extends Person {
 
     // Calculate BMI
     private double calculateBMI(double height, double weight) {
-        return weight / ((height / 100) * (height / 100)); // Assuming height in cm
+        return weight / ((height / 100) * (height / 100)); 
     }
 
 	public int getPatientId() {
@@ -114,5 +114,10 @@ public class Patient extends Person {
 	public void setCurrentTreatedBy(String currentTreatedBy) {
 		this.currentTreatedBy = currentTreatedBy;
 	}
+	
+	@Override
+    public void displayInfo() {
+        System.out.println("Patient: " + getName() + ", Issue: " + diagnosis);
+    }
 
 }

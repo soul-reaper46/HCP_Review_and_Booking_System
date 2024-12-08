@@ -31,8 +31,6 @@ public class PastAppointmentsController {
     @FXML
     private TableColumn<Appointment, LocalDate> colAppointmentDate;
 
-    // Removed the colAppointmentTime column
-
     public void initialize() {
         // Set up column cell value factories
         colDoctorName.setCellValueFactory(cellData -> {

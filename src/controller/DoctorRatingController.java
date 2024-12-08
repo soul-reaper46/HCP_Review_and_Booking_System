@@ -59,7 +59,7 @@ public class DoctorRatingController {
                 treatmentRating,
                 behaviourRating,
                 costRating,
-                ""); // You can optionally add textual feedback here
+                ""); 
 
         // Add the feedback to the feedbackList in Data class
         Data.addFeedback(feedback);

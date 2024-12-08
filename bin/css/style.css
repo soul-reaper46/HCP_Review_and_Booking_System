@@ -233,7 +233,7 @@
     -fx-text-fill: #333;
     -fx-font-size: 14px;
     -fx-border-color: #f1f1f1;
-    -fx-border-width: 0 0 1 0; /* Adding subtle bottom border */
+    -fx-border-width: 0 0 1 0; 
 }
 
 /* Hover Effect for Table Cells */
